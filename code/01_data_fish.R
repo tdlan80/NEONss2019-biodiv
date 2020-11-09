@@ -244,13 +244,13 @@ fsh_dat_wide_total.obs <- fsh_aggregate_mod %>%
 # make wide for total observations without catch per unit efforts
 fsh_dat_wide_total.obs <- fsh_aggregate_mod %>% 
   dplyr::group_by(year, month, siteID, namedLocation, reachID, fixedRandomReach, aquaticSiteType, samplerType) %>%
-  tidyr::pivot_wider(names_from = scientificName, values_from = number_of_fish, names_repair = "unique",  values_fill = 0, names_sep = NULL) %>%
+  tidyr::pivot_wider(names_from = scientificName, values_from = number_of_fish, names_repair = "unique",  values_fill = 0, names_sep = "_") %>%
   dplyr::select(-n_obs, -number_of_fish)
 
 # make wide for catch per unit efforts
 fsh_dat_wide_CPUE <- fsh_aggregate_mod2 %>% 
   dplyr::group_by(year, month, siteID, namedLocation, reachID, fixedRandomReach, aquaticSiteType, samplerType) %>%
-  tidyr::pivot_wider(names_from = scientificName, values_from = CPUE, names_repair = "unique",  values_fill = 0, names_sep = NULL) %>%
+  tidyr::pivot_wider(names_from = scientificName, values_from = CPUE, names_repair = "unique",  values_fill = 0, names_sep = "_") %>%
   dplyr::select(-n_obs, -number_of_fish)
 
 
